@@ -1,0 +1,51 @@
+<navbar></navbar>
+
+<div class="container pt-100 mb-5">
+    <div *ngIf="orderSent" class="m-2 text-center">
+        <h2>Teşekkür ederiz.</h2>
+        <p>Siparişiniz kayıt edildi.</p>
+        <button class="btn btn-primary" routerLink="/shop">Alışverişe devam et</button>
+    </div>
+    <div *ngIf="!orderSent" class="row">
+        <div class="col-md-8">
+            <form #form="ngForm" (ngSubmit)="submitOrder(form)" class="m-4">
+                <div class="form-group">
+                    <label>Ad</label>
+                    <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="order.name" required>
+                    <span *ngIf="submitted && name.invalid" class="text-danger">Lütfen adınızı giriniz.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Adres</label>
+                    <input type="text" class="form-control" #address="ngModel" name="address" [(ngModel)]="order.address" required>
+                    <span *ngIf="submitted && address.invalid" class="text-danger">Lütfen adresinizi giriniz.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Şehir</label>
+                    <input type="text" class="form-control" #city="ngModel" name="city" [(ngModel)]="order.city" required>
+                    <span *ngIf="submitted && city.invalid" class="text-danger">Lütfen şehir bilgisini giriniz.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input maxlength="11" placeholder="format: 01112223344" type="tel" name="phone" class="form-control" #phone="ngModel" [(ngModel)]="order.phone" required>
+                    <span *ngIf="submitted && phone.invalid" class="text-danger">Lütfen telefon numaranızı giriniz.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Eposta</label>
+                    <input placeholder="format: abc@gmailcom" type="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="order.email" required>
+                    <span *ngIf="submitted && email.invalid" class="text-danger">Lütfen epostanızı giriniz</span>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success mr-2">Siparişi Tamamla</button>
+                    <button type="submit" routerLink="/shop" class="btn btn-primary">Alışverişe Devam et</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>

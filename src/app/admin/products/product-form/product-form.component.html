@@ -1,0 +1,27 @@
+<div class="alert alert-success">Ürün {{editing ? "Düzenle" : "Oluştur"}}</div>
+
+        <form #form="ngForm" (ngSubmit)="saveProduct(form)">
+
+            <div class="form-group">
+                <label>Ürün Adı</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="product.name">
+            </div>
+
+            <div class="form-group">
+                <label>Fiyat</label>
+                <input type="number" class="form-control" name="price" [(ngModel)]="product.price">
+            </div>
+
+            <div class="form-group">
+                <label>Resim URL</label>
+                <input type="text" class="form-control" name="imageUrl" [(ngModel)]="product.imageUrl">
+            </div>
+
+            <div class="form-group">
+                <label>Ürün Açıklama</label>
+                <textarea rows="3" type="text" class="form-control" name="description"
+                    [(ngModel)]="product.description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mr-1">{{editing ? "Düzenle" : "Oluştur"}}</button>
+            <button class="btn btn-warning" routerLink="/admin/main/products">İptal Et</button>
+        </form>

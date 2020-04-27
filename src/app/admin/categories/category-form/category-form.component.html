@@ -1,0 +1,12 @@
+<div class="alert alert-success">Kategori {{editing ? "Düzenle" : "Oluştur"}}</div>
+
+<form #form="ngForm" (ngSubmit)="saveCategory(form)">
+
+    <div class="form-group">
+        <label>Kategori Adı</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="category.name">
+    </div>
+
+    <button type="submit" class="btn btn-primary mr-1">{{editing ? "Düzenle" : "Oluştur"}}</button>
+    <button class="btn btn-warning" routerLink="/admin/main/category">İptal Et</button>
+</form>
